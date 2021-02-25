@@ -50,11 +50,18 @@
 //     .then(() => console.log('success'))
 //     .catch(error => console.log('ERROR' + error));
 // '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-fetch('/user-profile')
-    .then(user => fetch(`/users/${user.id}/friends`))
-    .then(idList => {
-        const friends = idList.map(id => fetch(`/users/${id}`));
-        return Promise.all(friends);
-    })
-    .then(friends => console.log(friends))
-    .catch(error => console.error(error));
+/*
+ * Асинхронные функции возвращают промис
+ */
+
+const getFruit = async(name) => {
+    const fruits = {
+        apple: "🍎",
+        peach: "🍑",
+        grapes: "🍇",
+    };
+
+    return fruits[name];
+};
+console.log(getFruit("peach"));
+// getFruit("grapes").then((fruit) => console.log(fruit));
